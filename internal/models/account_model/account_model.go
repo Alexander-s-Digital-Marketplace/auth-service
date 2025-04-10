@@ -13,11 +13,7 @@ type RoleEnum string
 
 const (
 	ADM RoleEnum = "adm"
-	MNG RoleEnum = "mng"
-	WTR RoleEnum = "wtr"
-	KTN RoleEnum = "ktn"
-	BAR RoleEnum = "bar"
-	TBL RoleEnum = "tbl"
+	MDR RoleEnum = "mdr"
 )
 
 type UserAccount struct {
