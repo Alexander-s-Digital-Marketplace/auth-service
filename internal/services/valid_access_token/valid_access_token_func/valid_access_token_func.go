@@ -1,4 +1,4 @@
-package validaccesstoken
+package validaccesstokenfunc
 
 import (
 	"context"
@@ -30,7 +30,7 @@ func (s *Server) ValidAccessToken(ctx context.Context, req *pb.ValidRequest) (*p
 	claim := token.Claims.(jwt.MapClaims)
 	return &pb.ValidResponse{
 		Code: int32(200),
-		Id:   int32(claim["id"].(int)),
+		Id:   int32(claim["id"].(float64)),
 		Role: claim["role"].(string),
 	}, nil
 }
