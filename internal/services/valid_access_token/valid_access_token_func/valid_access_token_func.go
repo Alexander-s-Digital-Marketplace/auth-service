@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	jwtconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/jwt"
-	pb "github.com/KusakinDev/Catering-Auth-Service/internal/services/valid_access_token/valid_access_token_gen"
+	jwtconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/jwt"
+	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/valid_access_token/valid_access_token_gen"
 	"github.com/dgrijalva/jwt-go"
 )
 
