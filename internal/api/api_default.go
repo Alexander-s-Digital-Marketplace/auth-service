@@ -4,7 +4,7 @@ import (
 	changepassword "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/change_password"
 	getallroles "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/get_all_roles"
 	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/login"
-	refreshtoken "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/refreshToken"
+	refreshtoken "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/refresh_token"
 	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/registration"
 	resetpassword "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/reset_password"
 	validaccesstoken "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/valid_access_token"
