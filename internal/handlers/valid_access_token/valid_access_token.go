@@ -3,7 +3,7 @@ package validaccesstoken
 import (
 	"net/http"
 
-	jwtconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/jwt"
+	jwtconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/jwt"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 )

@@ -1,10 +1,10 @@
 package refreshtoken
 
 import (
-	jwtconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/jwt"
+	jwtconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/jwt"
 
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
-	jwtt "github.com/KusakinDev/Catering-Auth-Service/internal/utils/jwt"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
+	jwtt "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/utils/jwt"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 )

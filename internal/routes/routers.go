@@ -3,8 +3,8 @@ package routespkg
 import (
 	"net/http"
 
-	api "github.com/KusakinDev/Catering-Auth-Service/internal/api"
-	authmiddlewares "github.com/KusakinDev/Catering-Auth-Service/internal/middlewares/auth_middlewares"
+	api "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/api"
+	authmiddlewares "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/middlewares/auth_middlewares"
 	"github.com/gin-gonic/gin"
 )
 

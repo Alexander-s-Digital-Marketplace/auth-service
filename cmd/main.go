@@ -12,8 +12,8 @@ package main
 import (
 	"log"
 
-	loggerconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/logger"
-	routespkg "github.com/KusakinDev/Catering-Auth-Service/internal/routes"
+	loggerconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/logger"
+	routespkg "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/routes"
 )
 
 func main() {

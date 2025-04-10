@@ -1,7 +1,7 @@
 package rolemodel
 
 import (
-	"github.com/KusakinDev/Catering-Auth-Service/internal/database"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/database"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )

@@ -1,9 +1,9 @@
 package resetpassword
 
 import (
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
-	resetpasswordcode "github.com/KusakinDev/Catering-Auth-Service/internal/models/reset_password_model"
-	"github.com/KusakinDev/Catering-Auth-Service/internal/utils/email"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
+	resetpasswordcode "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/reset_password_model"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/utils/email"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )

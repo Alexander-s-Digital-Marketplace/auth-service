@@ -5,8 +5,8 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/KusakinDev/Catering-Auth-Service/internal/database"
-	account "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/database"
+	account "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )

@@ -1,8 +1,8 @@
 package login
 
 import (
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
-	"github.com/KusakinDev/Catering-Auth-Service/internal/utils/jwt"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/utils/jwt"
 	"github.com/gin-gonic/gin"
 	logger "github.com/sirupsen/logrus"
 )

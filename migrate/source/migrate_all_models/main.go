@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 
-	"github.com/KusakinDev/Catering-Auth-Service/internal/database"
-	accountmodel "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
-	resetpasswordmodel "github.com/KusakinDev/Catering-Auth-Service/internal/models/reset_password_model"
-	rolemodel "github.com/KusakinDev/Catering-Auth-Service/internal/models/role_model"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/database"
+	accountmodel "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
+	resetpasswordmodel "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/reset_password_model"
+	rolemodel "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/role_model"
 )
 
 func main() {
