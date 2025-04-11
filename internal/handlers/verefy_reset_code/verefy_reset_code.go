@@ -13,9 +13,11 @@ func VerefyResetCodeHandle(c *gin.Context) (int, string, string, string) {
 	var resetFormFront resetpasswordcode.ResetCode
 	var resetFormDB resetpasswordcode.ResetCode
 	var user useraccount.UserAccount
+	var userFront useraccount.UserAccount
 	var err error
 
 	resetFormFront.DecodeFromContext(c)
+	userFront = resetFormFront.User
 	user = resetFormFront.User
 
 	err = user.GetFromTableByEmail()
@@ -52,6 +54,10 @@ func VerefyResetCodeHandle(c *gin.Context) (int, string, string, string) {
 	}
 
 	resetFormDB.DeleteFromTableByCode()
+
+	user.SetPasswordHash(userFront.Password)
+
+	user.UpdateInTable()
 
 	return 200, accessToken, refreshToken, "Reset password is success"
 
