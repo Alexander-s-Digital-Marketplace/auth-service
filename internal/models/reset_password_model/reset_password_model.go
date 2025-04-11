@@ -90,7 +90,7 @@ func (resetForm *ResetCode) GetFromTableByUserId() error {
 	var db database.DataBase
 	db.InitDB()
 
-	err := db.Connection.First(&resetForm, "user_id = ?", resetForm.Id_user).Error
+	err := db.Connection.First(&resetForm, "id_user = ?", resetForm.Id_user).Error
 	if err != nil {
 		db.CloseDB()
 		return err
