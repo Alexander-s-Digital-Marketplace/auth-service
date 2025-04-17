@@ -5,8 +5,8 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/KusakinDev/Catering-Auth-Service/internal/database"
-	account "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/database"
+	account "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -90,7 +90,7 @@ func (resetForm *ResetCode) GetFromTableByUserId() error {
 	var db database.DataBase
 	db.InitDB()
 
-	err := db.Connection.First(&resetForm, "user_id = ?", resetForm.Id_user).Error
+	err := db.Connection.First(&resetForm, "id_user = ?", resetForm.Id_user).Error
 	if err != nil {
 		db.CloseDB()
 		return err

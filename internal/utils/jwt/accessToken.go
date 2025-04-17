@@ -3,8 +3,8 @@ package jwt
 import (
 	"time"
 
-	jwtconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/jwt"
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
+	jwtconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/jwt"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
 	"github.com/golang-jwt/jwt/v5"
 )
 
@@ -12,7 +12,7 @@ import (
 func GenerateAccessToken(user useraccount.UserAccount) (int, string, string) {
 	accessToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"id":   user.Id,
-		"exp":  time.Now().Add(30 * time.Second).Unix(), //30 sec
+		"exp":  time.Now().Add(3600 * time.Second).Unix(), //30 sec
 		"role": user.Role,
 	})
 	accessTokenString, err := accessToken.SignedString(jwtconfig.JWT_KEY)

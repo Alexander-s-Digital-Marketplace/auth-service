@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/KusakinDev/Catering-Auth-Service/internal/database"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/database"
 )
 
 func main() {

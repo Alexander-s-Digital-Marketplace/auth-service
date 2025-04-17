@@ -4,7 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 
-	"github.com/KusakinDev/Catering-Auth-Service/internal/database"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/database"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -13,18 +13,30 @@ type RoleEnum string
 
 const (
 	ADM RoleEnum = "adm"
-	MNG RoleEnum = "mng"
-	WTR RoleEnum = "wtr"
-	KTN RoleEnum = "ktn"
-	BAR RoleEnum = "bar"
-	TBL RoleEnum = "tbl"
+	MDR RoleEnum = "mdr"
 )
 
+type ProfileTDO struct {
+	UserName      string `json:"user_name"`
+	Email         string `json:"email"`
+	Password      string `json:"password"`
+	AccountInfoId int
+}
+
+func (profile *ProfileTDO) DecodeFromContext(c *gin.Context) error {
+
+	if err := c.ShouldBindJSON(&profile); err != nil {
+		logrus.Error("Error decode JSON: ", err)
+		return err
+	}
+	return nil
+}
+
 type UserAccount struct {
-	Id       int      `gorm:"primaryKey;autoIncrement"`
-	Email    string   `gorm:"type:varchar(50)"`
-	Password string   `gorm:"type:varchar(100)"`
-	Role     RoleEnum `gorm:"type:varchar(5)"`
+	Id       int      `json:"id" gorm:"primaryKey;autoIncrement"`
+	Email    string   `json:"email" gorm:"type:varchar(50)"`
+	Password string   `json:"password" gorm:"type:varchar(100)"`
+	Role     RoleEnum `json:"role" gorm:"type:varchar(5)"`
 }
 
 // Set password as hash

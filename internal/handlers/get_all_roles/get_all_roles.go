@@ -1,7 +1,7 @@
 package getallroles
 
 import (
-	rolemodel "github.com/KusakinDev/Catering-Auth-Service/internal/models/role_model"
+	rolemodel "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/role_model"
 	"github.com/gin-gonic/gin"
 )
 

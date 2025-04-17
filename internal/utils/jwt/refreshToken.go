@@ -3,8 +3,8 @@ package jwt
 import (
 	"time"
 
-	jwtconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/jwt"
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
+	jwtconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/jwt"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
 	"github.com/golang-jwt/jwt/v5"
 )
 

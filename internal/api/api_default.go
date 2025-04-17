@@ -1,14 +1,14 @@
 package api
 
 import (
-	changepassword "github.com/KusakinDev/Catering-Auth-Service/internal/handlers/change_password"
-	getallroles "github.com/KusakinDev/Catering-Auth-Service/internal/handlers/get_all_roles"
-	"github.com/KusakinDev/Catering-Auth-Service/internal/handlers/login"
-	refreshtoken "github.com/KusakinDev/Catering-Auth-Service/internal/handlers/refreshToken"
-	"github.com/KusakinDev/Catering-Auth-Service/internal/handlers/registration"
-	resetpassword "github.com/KusakinDev/Catering-Auth-Service/internal/handlers/reset_password"
-	validaccesstoken "github.com/KusakinDev/Catering-Auth-Service/internal/handlers/valid_access_token"
-	verefyresetcode "github.com/KusakinDev/Catering-Auth-Service/internal/handlers/verefy_reset_code"
+	changepassword "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/change_password"
+	getallroles "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/get_all_roles"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/login"
+	refreshtoken "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/refresh_token"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/registration"
+	resetpassword "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/reset_password"
+	validaccesstoken "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/valid_access_token"
+	verefyresetcode "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/handlers/verefy_reset_code"
 	"github.com/gin-gonic/gin"
 )
 

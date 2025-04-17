@@ -1,9 +1,9 @@
 package verefyresetcode
 
 import (
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
-	resetpasswordcode "github.com/KusakinDev/Catering-Auth-Service/internal/models/reset_password_model"
-	"github.com/KusakinDev/Catering-Auth-Service/internal/utils/jwt"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
+	resetpasswordcode "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/reset_password_model"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/utils/jwt"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -13,9 +13,11 @@ func VerefyResetCodeHandle(c *gin.Context) (int, string, string, string) {
 	var resetFormFront resetpasswordcode.ResetCode
 	var resetFormDB resetpasswordcode.ResetCode
 	var user useraccount.UserAccount
+	var userFront useraccount.UserAccount
 	var err error
 
 	resetFormFront.DecodeFromContext(c)
+	userFront = resetFormFront.User
 	user = resetFormFront.User
 
 	err = user.GetFromTableByEmail()
@@ -52,6 +54,10 @@ func VerefyResetCodeHandle(c *gin.Context) (int, string, string, string) {
 	}
 
 	resetFormDB.DeleteFromTableByCode()
+
+	user.SetPasswordHash(userFront.Password)
+
+	user.UpdateInTable()
 
 	return 200, accessToken, refreshToken, "Reset password is success"
 

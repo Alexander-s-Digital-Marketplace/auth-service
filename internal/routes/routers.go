@@ -3,8 +3,9 @@ package routespkg
 import (
 	"net/http"
 
-	api "github.com/KusakinDev/Catering-Auth-Service/internal/api"
-	authmiddlewares "github.com/KusakinDev/Catering-Auth-Service/internal/middlewares/auth_middlewares"
+	api "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/api"
+	authmiddlewares "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/middlewares/auth_middlewares"
+	corsmiddleware "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/middlewares/auth_middlewares/cors_middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -27,6 +28,7 @@ func NewRouter(handleFunctions ApiHandleFunctions) *gin.Engine {
 
 // NewRouter add routes to existing gin engine.
 func NewRouterWithGinEngine(router *gin.Engine, handleFunctions ApiHandleFunctions) *gin.Engine {
+	router.Use(corsmiddleware.CorsMiddleware())
 	protected := router.Group("/")
 	protected.Use(authmiddlewares.AuthMiddleware())
 	for _, route := range getRoutes(handleFunctions) {

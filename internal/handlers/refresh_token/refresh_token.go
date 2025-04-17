@@ -1,10 +1,11 @@
 package refreshtoken
 
 import (
-	jwtconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/jwt"
+	jwtconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/jwt"
+	"github.com/sirupsen/logrus"
 
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
-	jwtt "github.com/KusakinDev/Catering-Auth-Service/internal/utils/jwt"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
+	jwtt "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/utils/jwt"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 )
@@ -24,6 +25,7 @@ func RefreshTokenHandle(c *gin.Context) (int, string, string, string) {
 		return jwtconfig.JWT_KEY, nil
 	})
 	if err != nil || !token.Valid {
+		logrus.Errorln("Invalid refresh token:", reqBody.RefreshToken)
 		return 406, "", "", "Invalid refresh token"
 	}
 
@@ -49,5 +51,6 @@ func RefreshTokenHandle(c *gin.Context) (int, string, string, string) {
 		return codeR, "", "", errRT
 	}
 
+	logrus.Infoln("refreshToken", refreshToken)
 	return 200, accessToken, refreshToken, "Token generation is successful"
 }

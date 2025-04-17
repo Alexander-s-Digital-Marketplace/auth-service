@@ -11,18 +11,42 @@ package main
 
 import (
 	"log"
+	"net"
 
-	loggerconfig "github.com/KusakinDev/Catering-Auth-Service/internal/config/logger"
-	routespkg "github.com/KusakinDev/Catering-Auth-Service/internal/routes"
+	loggerconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/logger"
+	routespkg "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/routes"
+	validaccesstokenfunc "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/valid_access_token/valid_access_token_func"
+	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/valid_access_token/valid_access_token_gen"
+	"github.com/sirupsen/logrus"
+	"google.golang.org/grpc"
 )
 
 func main() {
 	loggerconfig.Init()
-	routes := routespkg.ApiHandleFunctions{}
 
-	log.Printf("Server started")
+	go func() {
+		routes := routespkg.ApiHandleFunctions{}
+		logrus.Println("Server started")
+		router := routespkg.NewRouter(routes)
+		log.Fatal(router.Run(":8080"))
+	}()
 
-	router := routespkg.NewRouter(routes)
+	go func() {
+		listener, err := net.Listen("tcp", ":50051")
+		if err != nil {
+			log.Fatalf("Failed to listen: %v", err)
+		}
 
-	log.Fatal(router.Run(":8080"))
+		grpcServer := grpc.NewServer()
+
+		pb.RegisterValidAccessTokenServiceServer(grpcServer, &validaccesstokenfunc.Server{})
+
+		logrus.Println("gRPC server is running on port :50051")
+		if err := grpcServer.Serve(listener); err != nil {
+			log.Fatalf("Failed to serve gRPC server: %v", err)
+		}
+	}()
+
+	select {}
+
 }

@@ -1,9 +1,9 @@
 package changepassword
 
 import (
-	useraccount "github.com/KusakinDev/Catering-Auth-Service/internal/models/account_model"
-	changepasswordform "github.com/KusakinDev/Catering-Auth-Service/internal/models/change_password_form"
-	"github.com/KusakinDev/Catering-Auth-Service/internal/utils/jwt"
+	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
+	changepasswordform "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/change_password_form"
+	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/utils/jwt"
 	"github.com/gin-gonic/gin"
 	logger "github.com/sirupsen/logrus"
 )
