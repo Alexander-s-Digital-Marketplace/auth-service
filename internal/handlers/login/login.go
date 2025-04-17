@@ -4,7 +4,7 @@ import (
 	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
 	"github.com/Alexander-s-Digital-Marketplace/auth-service/internal/utils/jwt"
 	"github.com/gin-gonic/gin"
-	logger "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 // User's login
@@ -12,19 +12,23 @@ func LoginHandle(c *gin.Context) (int, string, string, string) {
 	var userFront useraccount.UserAccount
 	var userDB useraccount.UserAccount
 
-	userFront.DecodeFromContext(c)
-	userFront.SetPasswordHash(userFront.Password)
+	err := userFront.DecodeFromContext(c)
+	if err != nil {
+		logrus.Errorln("Empty field")
+		return 400, "", "", "Empty field"
+	}
 
+	userFront.SetPasswordHash(userFront.Password)
 	userDB.Email = userFront.Email
 
-	err := userDB.GetFromTable()
+	err = userDB.GetFromTableByEmail()
 	if err != nil {
-		logger.Errorln("Incorrect login")
+		logrus.Errorln("Incorrect login")
 		return 403, "", "", "Incorrect login or password"
 	}
 
 	if userDB.Password != userFront.Password {
-		logger.Errorln("Incorrect password")
+		logrus.Errorln("Incorrect password")
 		return 403, "", "", "Incorrect login or password"
 	}
 
@@ -38,7 +42,7 @@ func LoginHandle(c *gin.Context) (int, string, string, string) {
 		return codeR, "", "", errRT
 	}
 
-	logger.Infoln("Authorization is successful. User: ", userDB.Id, userDB.Email)
+	logrus.Infoln("Authorization is successful. User: ", userDB.Id, userDB.Email)
 
 	return 200, accessToken, refreshToken, "Authorization is successful"
 }
