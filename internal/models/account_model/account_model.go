@@ -16,11 +16,27 @@ const (
 	MDR RoleEnum = "mdr"
 )
 
+type ProfileTDO struct {
+	UserName      string `json:"user_name"`
+	Email         string `json:"email"`
+	Password      string `json:"password"`
+	AccountInfoId int
+}
+
+func (profile *ProfileTDO) DecodeFromContext(c *gin.Context) error {
+
+	if err := c.ShouldBindJSON(&profile); err != nil {
+		logrus.Error("Error decode JSON: ", err)
+		return err
+	}
+	return nil
+}
+
 type UserAccount struct {
-	Id       int      `gorm:"primaryKey;autoIncrement"`
-	Email    string   `gorm:"type:varchar(50)"`
-	Password string   `gorm:"type:varchar(100)"`
-	Role     RoleEnum `gorm:"type:varchar(5)"`
+	Id       int      `json:"id" gorm:"primaryKey;autoIncrement"`
+	Email    string   `json:"email" gorm:"type:varchar(50)"`
+	Password string   `json:"password" gorm:"type:varchar(100)"`
+	Role     RoleEnum `json:"role" gorm:"type:varchar(5)"`
 }
 
 // Set password as hash
