@@ -20,6 +20,7 @@ type ProfileTDO struct {
 	UserName      string `json:"user_name"`
 	Email         string `json:"email"`
 	Password      string `json:"password"`
+	Wallet        string `json:"wallet"`
 	AccountInfoId int
 }
 
@@ -98,17 +99,17 @@ func (user *UserAccount) GetFromTableByEmail() error {
 }
 
 // Get user from table by id
-func (user *UserAccount) GetFromTable() error {
+func (user *UserAccount) GetFromTable() int {
 	var db database.DataBase
 	db.InitDB()
 
 	err := db.Connection.First(&user).Error
 	if err != nil {
 		db.CloseDB()
-		return err
+		return 503
 	}
 	db.CloseDB()
-	return nil
+	return 200
 }
 
 // Update user in table by id

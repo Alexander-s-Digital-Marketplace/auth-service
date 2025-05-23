@@ -15,8 +15,8 @@ import (
 
 	loggerconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/logger"
 	routespkg "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/routes"
-	validaccesstokenfunc "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/valid_access_token/valid_access_token_func"
-	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/valid_access_token/valid_access_token_gen"
+	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/auth_service/auth_service_gen"
+	authserviceserver "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/auth_service/auth_service_server"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 )
@@ -39,7 +39,7 @@ func main() {
 
 		grpcServer := grpc.NewServer()
 
-		pb.RegisterValidAccessTokenServiceServer(grpcServer, &validaccesstokenfunc.Server{})
+		pb.RegisterAuthServiceServer(grpcServer, &authserviceserver.Server{})
 
 		logrus.Println("gRPC server is running on port :50051")
 		if err := grpcServer.Serve(listener); err != nil {
