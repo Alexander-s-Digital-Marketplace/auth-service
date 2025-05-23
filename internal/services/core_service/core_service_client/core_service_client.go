@@ -1,11 +1,11 @@
-package profileregister
+package coreserviceclient
 
 import (
 	"context"
 	"time"
 
 	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
-	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/profile_register_service/profile_register_service_gen"
+	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/core_service/core_service_gen"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -22,7 +22,7 @@ func ProfileRegister(profile useraccount.ProfileTDO) (int, string) {
 	}
 	defer conn.Close()
 
-	client := pb.NewProfileRegisterServiceClient(conn)
+	client := pb.NewCoreServiceClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -30,6 +30,7 @@ func ProfileRegister(profile useraccount.ProfileTDO) (int, string) {
 	req := &pb.Request{
 		UserName:      profile.UserName,
 		AccountInfoId: int32(profile.AccountInfoId),
+		Wallet:        profile.Wallet,
 	}
 
 	res, err := client.ProfileRegister(ctx, req)

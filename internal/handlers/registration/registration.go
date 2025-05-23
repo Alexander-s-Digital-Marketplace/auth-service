@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	useraccount "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/models/account_model"
-	profileregister "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/profile_register_service/profile_register_service_client"
+	coreserviceclient "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/core_service/core_service_client"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -20,12 +20,13 @@ func RegistrationHandle(c *gin.Context) (int, string) {
 	}
 	logrus.Infoln("profile: ", profile)
 
-	var user useraccount.UserAccount
-	user.Email = profile.Email
-	user.Password = profile.Password
+	user := useraccount.UserAccount{
+		Email:    profile.Email,
+		Password: profile.Password,
+	}
 	user.SetPasswordHash(user.Password)
 
-	if user.Email == "" || user.Password == "" {
+	if user.Email == "" || user.Password == "" || profile.Wallet == "" || profile.UserName == "" {
 		logrus.Errorln("Field is empty")
 		return 400, "Field is empty"
 	}
@@ -42,11 +43,12 @@ func RegistrationHandle(c *gin.Context) (int, string) {
 	profile.AccountInfoId = user.Id
 
 	var message string
-	code, message = profileregister.ProfileRegister(profile)
+	code, message = coreserviceclient.ProfileRegister(profile)
 	if code != 200 {
 		logrus.Errorln(message)
 		return code, message
 	}
+
 	logrus.Infoln("Registration of new user is successful. User: ", user.Id, user.Email)
 	return http.StatusOK, "Registration of new user is successful"
 

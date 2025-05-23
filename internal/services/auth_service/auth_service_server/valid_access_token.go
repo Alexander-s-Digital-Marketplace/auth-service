@@ -1,17 +1,13 @@
-package validaccesstokenfunc
+package authserviceserver
 
 import (
 	"context"
 	"errors"
 
 	jwtconfig "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/config/jwt"
-	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/valid_access_token/valid_access_token_gen"
+	pb "github.com/Alexander-s-Digital-Marketplace/auth-service/internal/services/auth_service/auth_service_gen"
 	"github.com/dgrijalva/jwt-go"
 )
-
-type Server struct {
-	pb.UnimplementedValidAccessTokenServiceServer
-}
 
 func (s *Server) ValidAccessToken(ctx context.Context, req *pb.ValidRequest) (*pb.ValidResponse, error) {
 	tokenString := req.AccessToken
