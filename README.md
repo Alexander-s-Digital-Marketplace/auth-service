@@ -1,4 +1,3 @@
-# Auth-Service
+# ADM-Auth-Service
+Сервис авторизации (REST, gRPC)
 
-## Deploy
-- $ docker-compose up
